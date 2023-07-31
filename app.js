@@ -17,4 +17,3 @@ function handleTitleClick(){
 }
 
 h1.addEventListener("click", handleTitleClick);
-
