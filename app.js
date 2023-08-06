@@ -1,19 +1,30 @@
 
-const h1 = document.querySelector("div.hello:first-child h1")
+const loginForm = document.querySelector("#login-form");
+const loginInput = document.querySelector("#login-input");
+const greeting = document.querySelector("#greeting");
 
-function handleTitleClick(){
-    const clickedClass = "clicked";
-    // toggle 은 classlist에 classname이 존재하면 삭제, 존재하지 않는다면 classname을 추가해준다.
-    // 아래의 if문의 동작을 한줄로 표현.
-    h1.classList.toggle("clicked");
+//submit을 하게되면 브라우저는 새로고침이 되는데 그걸 방지하기위해 preventDefualt()함수를 사용함. (브라우저의 기본 동작 제어)
+//Submit은 엔터를 누르거나 버튼을 클릭할 때 발생하며, form 안에서 동작한다.
 
-    /*
-    if(h1.classList.contains(clickedClass)) {
-        h1.classList.remove(clickedClass);
-    } else {
-        h1.classList.add(clickedClass);
-    }
-*/
+//일반적으로, string값만 저장된 변수명은 대문자로 사용한다.
+const HIDDEN_CLASSNAME = "hidden";
+
+function onLoginSubmit(event) { 
+    event.preventDefault(); //기본동작 실행 제어
+    loginForm.classList.add(HIDDEN_CLASSNAME);
+    const username = loginInput.value;
+    greeting.innerText = "Hello " + username;
+    greeting.innerText = `Hello ${username} keep going!`;
+    // "" , '' 쌍따옴표나 따옴표가 아닌 백틱(``)을 사용한다.
+    greeting.classList.remove(HIDDEN_CLASSNAME);
 }
 
-h1.addEventListener("click", handleTitleClick);
+//함수를 만들 때 뒤의 () 를 붙힌다면 호출과 동시에 바로 실행됨.
+// # addEventListner를 실행할때는 절대 () 를 사용한 함수를 이용하지 않는다.
+loginForm.addEventListener("submit", onLoginSubmit);
+
+
+
+
+
+
