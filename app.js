@@ -8,20 +8,34 @@ const greeting = document.querySelector("#greeting");
 
 //일반적으로, string값만 저장된 변수명은 대문자로 사용한다.
 const HIDDEN_CLASSNAME = "hidden";
+const USERNAME_KEY = "username";
 
 function onLoginSubmit(event) { 
     event.preventDefault(); //기본동작 실행 제어
     loginForm.classList.add(HIDDEN_CLASSNAME);
     const username = loginInput.value;
-    greeting.innerText = "Hello " + username;
-    greeting.innerText = `Hello ${username} keep going!`;
+    localStorage.setItem("USERNAME_KEY", username);
+    paintGreetings(username);
     // "" , '' 쌍따옴표나 따옴표가 아닌 백틱(``)을 사용한다.
-    greeting.classList.remove(HIDDEN_CLASSNAME);
 }
 
 //함수를 만들 때 뒤의 () 를 붙힌다면 호출과 동시에 바로 실행됨.
 // # addEventListner를 실행할때는 절대 () 를 사용한 함수를 이용하지 않는다.
 loginForm.addEventListener("submit", onLoginSubmit);
+
+function paintGreetings(username){
+    greeting.innerText = `Hello ${username}`;
+    greeting.classList.remove(HIDDEN_CLASSNAME);
+}
+
+const savedUsername = localStorage.getItem(USERNAME_KEY);
+
+if (savedUsername === null) {
+    loginForm.classList.remove(HIDDEN_CLASSNAME);
+    loginForm.addEventListener("submit", onLoginSubmit);
+} else {
+    paintGreetings(savedUsername);
+}
 
 
 
