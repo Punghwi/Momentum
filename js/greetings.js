@@ -14,7 +14,7 @@ function onLoginSubmit(event) {
     event.preventDefault(); //기본동작 실행 제어
     loginForm.classList.add(HIDDEN_CLASSNAME);
     const username = loginInput.value;
-    localStorage.setItem("USERNAME_KEY", username);
+    localStorage.setItem(USERNAME_KEY, username);
     paintGreetings(username);
     // "" , '' 쌍따옴표나 따옴표가 아닌 백틱(``)을 사용한다.
 }

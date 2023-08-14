@@ -21,14 +21,14 @@ const quotes = [
 }
 ];
 
-const quote = document.querySelector("#quote span:first-child"); // 첫번째 span
-const author = document.querySelector("#secondQuote span:last-child"); // 마지막 span
-
 //round - 반올림, floor - 내림 , ceil - 올림
 
-//floor - 무조건 내림을 사용하기에 5 이전까지인 4.9999  . . . 의 숫자만 리턴된다.
+// floor - 무조건 내림
 // 배열의 최대 길이값을 곱해주기 위해 length 사용
 // console.log(`${todaysQuote.quote} ${todaysQuote.author}`);
+
+const quote = document.querySelector("#quote span:first-child"); // 첫번째 span
+const author = document.querySelector("#quote span:last-child"); // 마지막 span
 
 const todaysQuote = quotes[Math.floor(Math.random() * quotes.length)];
 
